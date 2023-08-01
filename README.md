@@ -24,7 +24,7 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 
 ## 使用前準備
 
-1. 將 `coordinate_transform` 資料夾放到你的專案資料夾下的 `lib` 資料夾裡面。
+1. 將 `./lib` 內的 `coordinate_transform` 資料夾放到你的專案資料夾下的 `lib` 資料夾裡面。
 
 2. 在你的程式碼裡面加入以下程式碼：
     ```python
