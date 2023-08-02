@@ -1,3 +1,7 @@
+# Author: ericlwc
+
+import os
+
 from lib.coordinate_transform.GIS.management import *
 from lib.coordinate_transform.GIS.lib.ProjParser import parse_crs
 
