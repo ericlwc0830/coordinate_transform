@@ -13,11 +13,11 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 - **in_table_path** (str): 輸入表格的路徑
 - **in_x_field** (str): 輸入表格的x座標欄位
 - **in_y_field** (str): 輸入表格的y座標欄位
-- **in_crs** (int/str/CRS): 輸入表格的座標系統，可以是epsg代碼、wkt字串、prj檔路徑、pyproj.crs.CRS物件
+- **in_crs** (int/str/CRS): 輸入表格的座標參考系統，可以是epsg代碼、wkt字串、prj檔路徑、pyproj.crs.CRS物件
 - **out_table_path** (str/None): 輸出表格的路徑，若與in_table_path相同則會覆蓋原本的檔案，若為None則不會儲存
 - **out_x_field** (str): 輸出表格的x座標欄位，該欄位若不存在則創建，存在則覆蓋該欄位原本的內容
 - **out_y_field** (str): 輸出表格的y座標欄位，該欄位若不存在則創建，存在則覆蓋該欄位原本的內容
-- **out_crs** (int/str/CRS): 輸出表格的座標系統，可以是epsg代碼、wkt字串、prj檔路徑、pyproj.crs.CRS物件
+- **out_crs** (int/str/CRS): 輸出表格的座標參考系統，可以是epsg代碼、wkt字串、prj檔路徑、pyproj.crs.CRS物件
 
 ## 回傳值
 轉換過的padnas.DataFrame
