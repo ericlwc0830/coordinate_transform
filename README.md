@@ -39,8 +39,18 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 
 3. 如此便可使用 `coordinate_transform` 函式了
 
-## 使用範例
-`example1.py`
+## 使用範例1
+原本的表格`example1_input.csv`為：
+
+| x | y | value |
+| - | - | ----- |
+| 0 | 0 | 0     |
+| 0 | 1 | 1     |
+| 0 | 2 | 2     |
+| 0 | 3 | 3     |
+
+執行如下的 `example1.py`：
+
 ```python
 # 將資料夾加入環境變數
 import os
@@ -75,9 +85,16 @@ UNIT["Meter",1.0]]""",
     # 以下的out_crs是以WGS1984經緯座標系統的epsg代碼
     out_crs=4326
 )
-
-# 即可得到新的檔案example_output.csv
 ```
+
+執行後可得到帶有轉換過的資料之新表格`example_output.csv`
+
+| x | y | value | lon              | lat       |
+| - | - | ----- | ----------------| --------- |
+| 0 | 0 | 0     | 121.78061420000002 | 25.071246 |
+| 0 | 1 | 1     | 121.78061420000002 | 25.07125502739332 |
+| 0 | 2 | 2     | 121.78061420000002 | 25.07126405478664 |
+| 0 | 3 | 3     | 121.78061420000002 | 25.07127308217994 |
 
 ## 作者
 ericlwc
