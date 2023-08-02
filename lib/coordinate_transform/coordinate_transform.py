@@ -25,6 +25,10 @@ def coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_tabl
     # READ in_table_path
     df = pd.read_csv(in_table_path)
 
+    # CHECK if in_x_field == in_y_field
+    if in_x_field == in_y_field:
+        raise ValueError("in_x_field same as in_y_field")
+    
     # CHECK if in_x_field is in df.columns
     if not isinstance(in_x_field, str):
         raise ValueError("in_x_field must be a string")
@@ -46,6 +50,10 @@ def coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_tabl
     elif not isinstance(out_table_path, str):
         raise ValueError("out_table_path must be a string")
 
+    # CHECK if out_x_field == out_y_field
+    if out_x_field == out_y_field:
+        raise ValueError("out_x_field same as out_y_field")
+    
     # CHECK if out_x_field is valid
     if not isinstance(out_x_field, str):
         raise ValueError("out_x_field must be a string")
