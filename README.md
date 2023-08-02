@@ -28,7 +28,7 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 
 2. 在你的程式碼裡面加入以下程式碼：
     ```python
-    # 將專案資料夾加入環境變數
+    # 將專案檔的資料夾（./）加入為暫時的環境變數
     import os
     import sys
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -40,72 +40,72 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 3. 如此便可使用 `coordinate_transform` 函式了
 
 ## 使用範例1
-原本的表格`example1_input.csv`為：
+1. 原本的表格`example1_input.csv`為：
+    
+    | x | y | value |
+    | - | - | ----- |
+    | 0 | 0 | 0     |
+    | 0 | 1 | 1     |
+    | 0 | 2 | 2     |
+    | 0 | 3 | 3     |
 
-| x | y | value |
-| - | - | ----- |
-| 0 | 0 | 0     |
-| 0 | 1 | 1     |
-| 0 | 2 | 2     |
-| 0 | 3 | 3     |
+2. 執行如下的 `example1.py`：
+    
+    ```python
+    # 將資料夾加入環境變數
+    import os
+    import sys
+    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    
+    # 引入寫好的函式
+    from lib.coordinate_transform.coordinate_transform import coordinate_transform
+    
+    # 使用函式
+    coordinate_transform(
+        in_table_path='example1_input.csv',
+        in_x_field='x',
+        in_y_field='y',
+        # 以下的in_crs是以五分山雷達站為中心且以公尺為單位的等距方位座標（極投影）wkt字串
+        in_crs="""\
+    PROJCS["RCWF_projection",
+    GEOGCS["GCS_WGS_1984",
+        DATUM["D_WGS_1984",
+            SPHEROID["WGS_1984",6378137.0,298.257223563]],
+        PRIMEM["Greenwich",0.0],
+        UNIT["Degree",0.0174532925199433]],
+    PROJECTION["Azimuthal_Equidistant"],
+    PARAMETER["False_Easting",0.0],
+    PARAMETER["False_Northing",0.0],
+    PARAMETER["Central_Meridian",121.7806142],
+    PARAMETER["Latitude_Of_Origin",25.071246],
+    UNIT["Meter",1.0]]""",
+        out_table_path='example1_output.csv',
+        out_x_field='lon',
+        out_y_field='lat',
+        # 以下的out_crs是以WGS1984經緯座標系統的epsg代碼
+        out_crs=4326
+    )
+    ```
 
-執行如下的 `example1.py`：
+3. 執行後可得到帶有轉換過的資料之新表格`example_output.csv`
 
-```python
-# 將資料夾加入環境變數
-import os
-import sys
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-
-# 引入寫好的函式
-from lib.coordinate_transform.coordinate_transform import coordinate_transform
-
-# 使用函式
-coordinate_transform(
-    in_table_path='example1_input.csv',
-    in_x_field='x',
-    in_y_field='y',
-    # 以下的in_crs是以五分山雷達站為中心且以公尺為單位的等距方位座標（極投影）wkt字串
-    in_crs="""\
-PROJCS["RCWF_projection",
-GEOGCS["GCS_WGS_1984",
-    DATUM["D_WGS_1984",
-        SPHEROID["WGS_1984",6378137.0,298.257223563]],
-    PRIMEM["Greenwich",0.0],
-    UNIT["Degree",0.0174532925199433]],
-PROJECTION["Azimuthal_Equidistant"],
-PARAMETER["False_Easting",0.0],
-PARAMETER["False_Northing",0.0],
-PARAMETER["Central_Meridian",121.7806142],
-PARAMETER["Latitude_Of_Origin",25.071246],
-UNIT["Meter",1.0]]""",
-    out_table_path='example1_output.csv',
-    out_x_field='lon',
-    out_y_field='lat',
-    # 以下的out_crs是以WGS1984經緯座標系統的epsg代碼
-    out_crs=4326
-)
-```
-
-執行後可得到帶有轉換過的資料之新表格`example_output.csv`
-
-| x | y | value | lon              | lat       |
-| - | - | ----- | ----------------| --------- |
-| 0 | 0 | 0     | 121.78061420000002 | 25.071246 |
-| 0 | 1 | 1     | 121.78061420000002 | 25.07125502739332 |
-| 0 | 2 | 2     | 121.78061420000002 | 25.07126405478664 |
-| 0 | 3 | 3     | 121.78061420000002 | 25.07127308217994 |
+    | x | y | value | lon              | lat       |
+    | - | - | ----- | ----------------| --------- |
+    | 0 | 0 | 0     | 121.78061420000002 | 25.071246 |
+    | 0 | 1 | 1     | 121.78061420000002 | 25.07125502739332 |
+    | 0 | 2 | 2     | 121.78061420000002 | 25.07126405478664 |
+    | 0 | 3 | 3     | 121.78061420000002 | 25.07127308217994 |
 
 ## 作者
 ericlwc
 
 ## 更新紀錄
 
-2023/07/05 撰寫
+2023/07/05 ericlwc 撰寫
 
-2023/08/01 更新
+2023/08/01 ericlwc 更新
 - 刪去對shp暫存檔進行操作的過程，以移除對shp檔格式的依賴
 - 針對記憶體效率與儲存效率進行優化
 
-2023/08/02 更新
+2023/08/02 ericlwc 更新
 - 增加完整的說明檔案
