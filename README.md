@@ -7,7 +7,7 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 
 將輸入表格中的座標欄位從一個座標系統轉換成另一個座標系統，並新增轉換過的座標欄位至已經帶有舊座標欄位的表格並儲存。
 
-這個功能不會異動原本的資料，除非 in_table_path 與 out_table_path 相同。
+這個功能不會異動原本的資料，除非 in_table_path 與 out_table_path 相同，並經過確認。
 
 ## 參數說明
 - **in_table_path** (str): 輸入表格的路徑
