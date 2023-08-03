@@ -1,4 +1,4 @@
-# 將資料夾加入環境變數
+# 將專案檔的資料夾（./）加入為暫時的環境變數
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
