@@ -52,7 +52,7 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 2. 執行如下的 `example1.py`：
     
     ```python
-    # 將資料夾加入環境變數
+    # 將專案檔的資料夾（./）加入為暫時的環境變數
     import os
     import sys
     sys.path.append(os.path.dirname(os.path.abspath(__file__)))
