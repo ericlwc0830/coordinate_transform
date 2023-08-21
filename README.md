@@ -24,17 +24,20 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 
 ## 使用前準備
 
-1. 將 `./lib` 內的 `coordinate_transform` 資料夾放到你的專案資料夾下的 `lib` 資料夾裡面。
+1. 將 `./lib` 內的 `coordinate_transform` 與 `GIS` 資料夾放到你的專案中的任意位置（在此以放入`./lib`為例）。
 
-2. 在你的程式碼裡面加入以下程式碼：
+2. 將你放置 `coordinate_transform` 與 `GIS` 的資料夾加入至主程式（在此以example1.py作為主程式）的環境變數中。將資料夾加入主程式的方法是在城市中加入：
     ```python
-    # 將專案檔的資料夾（./）加入為暫時的環境變數
+    # 將專案檔的資料夾（./lib）加入為暫時的環境變數
     import os
     import sys
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.append(os.path.dirname(os.path.abspath(__file__))+"/lib")
+    ```
 
+3. 在你的程式碼裡面加入以下程式碼：
+    ```python
     # import本函式
-    from lib.coordinate_transform.coordinate_transform import coordinate_transform
+    from coordinate_transform import coordinate_transform
     ```
 
 3. 如此便可使用 `coordinate_transform` 函式了
@@ -52,13 +55,13 @@ coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_pa
 2. 執行如下的 `example1.py`：
     
     ```python
-    # 將專案檔的資料夾（./）加入為暫時的環境變數
+    # 將專案檔的資料夾（./lib）加入為暫時的環境變數
     import os
     import sys
-    sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+    sys.path.append(os.path.dirname(os.path.abspath(__file__))+"/lib")
     
     # 引入寫好的函式
-    from lib.coordinate_transform.coordinate_transform import coordinate_transform
+    from coordinate_transform import coordinate_transform
     
     # 使用函式
     coordinate_transform(

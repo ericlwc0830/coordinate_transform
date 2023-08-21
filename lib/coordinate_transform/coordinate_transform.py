@@ -2,8 +2,8 @@
 
 import os
 
-from lib.coordinate_transform.GIS.management import *
-from lib.coordinate_transform.GIS.lib.ProjParser import parse_crs
+from GIS.management import *
+from GIS.lib.ProjParser import parse_crs
 
 def coordinate_transform(in_table_path, in_x_field, in_y_field, in_crs, out_table_path, out_x_field, out_y_field, out_crs):
     """

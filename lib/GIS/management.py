@@ -3,7 +3,7 @@
 import geopandas as gpd
 import pandas as pd
 
-from lib.coordinate_transform.GIS.lib.ProjParser import parse_crs
+from GIS.lib.ProjParser import parse_crs
 
 def XYTableToPoint(in_table, out_feature_class, x_field, y_field, z_field=None, coordinate_system=None):
     """
